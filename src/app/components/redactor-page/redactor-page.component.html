@@ -1,0 +1,39 @@
+<header></header>
+<main>
+  <form class="redactor-form">
+    <div class="photo-block">
+      <div class="image-block">
+        <img src="{{ article.imageUrl }}" alt="Photo" />
+      </div>
+      <div class="date-block">
+        <p class="name">{{ article.name }}</p>
+        <p class="description">
+          {{ article.date.toDate() | date : "dd.MM.yyyy HH:mm" }}
+        </p>
+      </div>
+    </div>
+    <textarea
+      #textareaInput
+      class="redactor-textarea"
+      name="message"
+      [disabled]="permision"
+      (input)="checkIfChange($any($event))"
+      >{{ article.description }}</textarea
+    >
+    <br />
+    <input
+      class="redaction-button"
+      type="button"
+      value="Редактировать"
+      (click)="enableRedaction()"
+    />
+    <input
+      [disabled]="needToBeSaved"
+      class="save-button"
+      type="button"
+      id="windowButton"
+      (click)="confirmChange(textareaInput.value)"
+      value="Сохранить"
+    />
+  </form>
+</main>

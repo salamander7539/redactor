@@ -1,0 +1,14 @@
+<ol class="paginator-container">
+  <li (click)="navigateToPage(index - 1)"><<</li>
+  <li class="dots" *ngIf="index >= 3 && pagination.maxPages != 3">...</li>
+  <li
+    *ngFor="let page of pagination.pages; trackBy: trackByFn"
+    class="paginator-number"
+    [class.active]="page === pagination.index"
+    (click)="navigateToPage(page)"
+  >
+    {{ page }}
+  </li>
+  <li class="dots" *ngIf="index <= pagination.maxPages-2 && pagination.maxPages != 3">...</li>
+  <li (click)="navigateToPage(index + 1)">>></li>
+</ol>

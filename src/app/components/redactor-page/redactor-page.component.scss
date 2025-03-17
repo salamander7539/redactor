@@ -1,0 +1,52 @@
+.redactor-form {
+  margin-top: 1em;
+  justify-self: center;
+
+  .redactor-textarea {
+    min-width: 550px;
+    min-height: 220px;
+  }
+
+  .redaction-button {
+    margin-right: 1em;
+    padding: 8px;
+    border-radius: 8px;
+    border: none;
+  }
+
+  .save-button {
+    padding: 8px;
+    border-radius: 8px;
+    border: none;
+  }
+}
+
+.photo-block {
+  display: flex;
+  gap: 10px;
+
+  .image-block {
+    width: 300px;
+    height: 300px;
+    margin-bottom: 1em;
+    overflow: hidden;
+
+    img {
+      border-radius: 8px;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .date-block {
+    margin-bottom: 1em;
+    width: 250px;
+    font-size: 20px;
+    font-weight: 500;
+
+    .name {
+      font-weight: 600;
+    }
+  }
+}

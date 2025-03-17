@@ -1,0 +1,16 @@
+<div class="card">
+  <a (click)="gotoItems(item)">
+    <div class="box">
+      <div class="image-box">
+        <img src="{{ item.imageUrl }}" alt="Photo" />
+      </div>
+      <div class="description-block">
+        <div class="name-text">{{ item.name }}</div>
+        <div class="description-text">{{ item.description }}</div>
+        <div class="date-text">
+          {{ item.date.toDate() | date : "dd.MM.yyyy HH:mm" }}
+        </div>
+      </div>
+    </div>
+  </a>
+</div>
