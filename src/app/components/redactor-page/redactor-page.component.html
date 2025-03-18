@@ -1,5 +1,6 @@
 <header></header>
 <main>
+  @if(article != null) {
   <form class="redactor-form">
     <div class="photo-block">
       <div class="image-block">
@@ -7,9 +8,11 @@
       </div>
       <div class="date-block">
         <p class="name">{{ article.name }}</p>
-        <p class="description">
-          {{ article.date.toDate() | date : "dd.MM.yyyy HH:mm" }}
-        </p>
+        
+          <p class="description">
+            {{article.date.seconds*1000 | date: 'dd.MM.yyyy HH.mm'}}
+          </p>
+        
       </div>
     </div>
     <textarea
@@ -36,4 +39,5 @@
       value="Сохранить"
     />
   </form>
+  }
 </main>

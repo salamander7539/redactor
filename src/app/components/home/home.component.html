@@ -1,6 +1,24 @@
 <div class="home-page">
-	<div class="text-center">
-		<h1>Cписок сотрудников<br />cлужбы безопасности</h1>
-	</div>
-	<app-pagination></app-pagination>
+  <div class="text-center">
+    <h1>Cписок сотрудников<br />cлужбы безопасности</h1>
+  </div>
+  <div class="list">
+    <ul>
+      @for (article of (articles$ | async)?.slice(start, end); track trackByFn)
+      {
+      <li>
+        <app-card [item]="article"></app-card>
+      </li>
+      }
+    </ul>
+
+    @if(articlesCount != 0) {
+    <app-numbered-pagination
+      (page)="pageEvent($event)"
+      [pageSize]="9"
+      [totalCount]="articlesCount"
+    >
+    </app-numbered-pagination>
+    }
+  </div>
 </div>

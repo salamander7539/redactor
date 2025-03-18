@@ -1,29 +1,33 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Article } from '../../interfaces/article';
-import { doc, Firestore, updateDoc } from '@angular/fire/firestore';
+import { Router } from '@angular/router';
+import { Article } from '../../interfaces/article.interface';
+import { doc, updateDoc } from '@angular/fire/firestore';
+import { CollectionService } from '../../servises/collection.service';
 
 @Component({
   selector: 'app-redactor-page',
   imports: [CommonModule],
   templateUrl: './redactor-page.component.html',
   styleUrl: './redactor-page.component.scss',
+  standalone: true,
 })
 export class RedactorPageComponent {
-  article: Article;
   permision: boolean = true;
   needToBeSaved: boolean = true;
+  private categoryService = inject(CollectionService);
+  article: Article;
 
-  constructor(private route: Router, private firestore: Firestore) {
-    this.article = this.route.getCurrentNavigation()?.extras.state?.[
+  constructor(private router: Router) {
+    this.article = this.router.getCurrentNavigation()!.extras.state?.[
       'articleData'
     ] as Article;
-
-    console.log(this.article);
   }
 
-  ngOnInit() {}
+  handleDetails(value: Article) {
+    localStorage.setItem('key', JSON.stringify(value));
+    console.log('saved');
+  }
 
   enableRedaction() {
     this.permision = !this.permision;
@@ -42,7 +46,7 @@ export class RedactorPageComponent {
 
   updateDat(input: string) {
     const docInstance = doc(
-      this.firestore,
+      this.categoryService.firestore,
       'datas',
       this.article.id.toString()
     );
@@ -52,7 +56,7 @@ export class RedactorPageComponent {
     updateDoc(docInstance, updateData)
       .then(() => {
         console.log('Data Updated');
-        this.route.navigateByUrl('home');
+        this.router.navigateByUrl('home');
       })
       .catch((err) => {
         console.log(err);

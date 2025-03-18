@@ -7,8 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:redactor": "node dist/redactor/server/server.mjs",
-    "postinstall": "patch-package"
+    "serve:ssr:redactor": "node dist/redactor/server/server.mjs"
   },
   "private": true,
   "dependencies": {

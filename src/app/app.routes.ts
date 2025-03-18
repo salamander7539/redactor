@@ -11,5 +11,5 @@ export const routes: Routes = [
     path: 'redactor',
     component: RedactorPageComponent,
   },
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', component: HomeComponent },
 ];

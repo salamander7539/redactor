@@ -6,12 +6,7 @@ import { addDoc, collection, Firestore } from '@angular/fire/firestore';
   selector: 'app-root',
   imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
+  standalone: true,
 })
-export class AppComponent implements OnInit {
-  constructor(private firestore: Firestore) {}
-
-  ngOnInit(): void {
-    
-  }
-}
+export class AppComponent {}
