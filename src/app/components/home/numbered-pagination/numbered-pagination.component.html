@@ -1,4 +1,4 @@
-<ol class="paginator-container">
+<ul class="paginator-container">
   <li (click)="navigateToPage(index - 1)"><<</li>
   @if (index >= 3 && pagination.maxPages != 3) {
   <li class="dots">...</li>
@@ -14,4 +14,4 @@
   <li class="dots">...</li>
   }
   <li (click)="navigateToPage(index + 1)">>></li>
-</ol>
+</ul>
